@@ -1,27 +1,54 @@
-#include <iostream>  // Librería estándar para entrada y salida (cin, cout)
-#include <cmath>     // Librería matemática (no se usa en este ejemplo, pero incluida)
+#include <iostream> // Librería estándar para entrada y salida (cin, cout)
+#include <cmath>    // Librería matemática (no se usa en este ejemplo)
+#include <vector>   // Librería necesaria para usar la clase vector
 
-using namespace std; // Permite usar cout, endl, etc., sin escribir std::
+using namespace std; // Permite usar cout, vector, endl sin escribir std::
 
-// Función que recibe un número entero como parámetro **por referencia**
-// Esto significa que cualquier cambio dentro de la función afectará la variable original
-void ejemploFuncion(int &num){
-    num = 50;  // Asigna 50 a la variable pasada como referencia
+// Función que recibe un vector de enteros POR REFERENCIA (&)
+// Esto evita copiar el vector y permite modificar el original
+void duplicarElementos(vector<int> &vec)
+{
+    // Bucle for-each que recorre cada elemento del vector
+    // 'valor' es una REFERENCIA a cada elemento del vector
+    for (int &valor : vec)
+    {
+        // Multiplica cada elemento por 2
+        // Al ser referencia, el cambio afecta directamente al vector original
+        valor *= 2;
+    }
 }
 
-int main(){
-    int miNum = 10;  // Declaración e inicialización de una variable entera
+int main()
+{
+    // Vector de enteros inicializado con 5 valores
+    vector<int> numeros = {1, 2, 3, 4, 5};
 
-    // Imprime el valor original de la variable miNum
-    cout << "Valor original: " << miNum << endl;
+    // Muestra los valores originales del vector
+    cout << "Valores originales: ";
 
-    // Llama a la función ejemploFuncion pasando miNum como argumento
-    // Ahora, como se pasa por referencia, la función modificará directamente miNum
-    ejemploFuncion(miNum);
+    // Recorre el vector mostrando cada elemento
+    // Aquí 'valor' es una COPIA (no modifica el vector)
+    for (int valor : numeros)
+    {
+        cout << valor << " ";
+    }
 
-    // Imprime el valor de miNum después de llamar a la función
-    // Ahora miNum ha cambiado a 50 debido a la referencia
-    cout << "Despues de llamar a la funcion: " << miNum << endl; 
+    cout << endl; // Salto de línea
+
+    // Llamada a la función pasando el vector por referencia
+    // La función modificará directamente el vector 'numeros'
+    duplicarElementos(numeros);
+
+    // Muestra los valores después de duplicarlos
+    cout << "Valores despues de llamar a la funcion: ";
+
+    // Se vuelve a recorrer el vector ya modificado
+    for (int valor : numeros)
+    {
+        cout << valor << " ";
+    }
+
+    cout << endl; // Salto de línea final
 
     return 0; // Indica que el programa terminó correctamente
 }
