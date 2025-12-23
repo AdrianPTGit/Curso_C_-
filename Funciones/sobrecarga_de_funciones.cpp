@@ -23,7 +23,7 @@ int main()
 {
     cout << sumar(3, 5) << endl;        // Llama a sumar(int, int)
     cout << sumar(2, 4, 6) << endl;     // Llama a sumar(int, int, int)
-    cout << sumar(2.5, 3.5) << endl;    // Llama a sumar(double, double)
+    cout << sumar(2.8, 3.5) << endl;    // Llama a sumar(double, double)
 
     return 0;
 }
