@@ -1,27 +1,33 @@
 #include <iostream> // Librería estándar para entrada y salida (cout, endl)
+
 using namespace std; // Permite usar cout y endl sin escribir std::
 
-// Función con parámetros por defecto
-// Si no se envían argumentos, se usan los valores indicados (= 10 y = 20)
-void mostrar(int x = 10, int y = 20)
+// Función que muestra un mensaje por pantalla
+// Parámetros:
+// - msg: mensaje a mostrar (por defecto "Mensaje por defecto")
+// - veces: número de veces que se mostrará el mensaje (por defecto 1)
+void mostrar(string msg = "Mensaje por defecto", int veces = 1)
 {
-    // Muestra los valores recibidos por la función
-    cout << "x = " << x << ", y = " << y << endl;
+    // Bucle que se ejecuta tantas veces como indique la variable 'veces'
+    for (size_t i = 0; i < veces; i++)
+    {
+        // Muestra el mensaje por pantalla y salta de línea
+        cout << msg << endl;
+    }
 }
 
 int main()
 {
-    // Llamada sin argumentos
-    // Se usan ambos valores por defecto: x = 10, y = 20
+    // Llama a la función mostrar sin parámetros
+    // Se usan los valores por defecto
     mostrar();
 
-    // Llamada con un solo argumento
-    // x toma el valor 5 y y usa su valor por defecto (20)
-    mostrar(5);
+    // Llama a la función pasando solo el mensaje
+    // 'veces' toma el valor por defecto (1)
+    mostrar("Hola");
 
-    // Llamada con dos argumentos
-    // Se usan los valores proporcionados: x = 5, y = 8
-    mostrar(5, 8);
+    // Llama a la función pasando mensaje y número de repeticiones
+    mostrar("Hola mundo!!!", 5);
 
     return 0; // Finaliza el programa correctamente
 }
